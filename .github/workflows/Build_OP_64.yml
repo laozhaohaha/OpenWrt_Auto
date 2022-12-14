@@ -10,8 +10,8 @@
 name: Build OpenWrt
 
 on: 
-  repository_dispatch:
-  workflow_dispatch:
+  #repository_dispatch:
+  #workflow_dispatch:
 
 
   #push:
@@ -41,6 +41,8 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+    name: Build OP
 
     steps:
     - name: 检查
